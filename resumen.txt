@@ -1,0 +1,115 @@
+• Introduccion:
+Git es un control de versiones, es un elemento/software/serie de comandos  que nos permite versionar nuestro código y hacerle un seguimiento al mismo desde la nube, si bien se puede usar Drive o DropBox en realidad no son las herramientas adecuadas para eso. Git nace con el fin de gestionar las versiones de enuestros proyectos.
+
+• Instalando GIT (terminal / git bash):
+ - En Mac y Linux ya viene instalando y lo llamamos terminal.
+ - En Windows debemos instalarlo y se llama bash, aunque sigue siendo una terminal. Si bien existe PowerShell y CMD, estos NO son user friendly, sobre todo esta última. 
+
+ ¿Cómo saber si tengo GIT instalado? usar --> git --version
+
+• Diferencia entre GIT y GITHUB:
+   Git es la TECNOLOGIA: Permite la creación de repositorios(almacen de archivos).
+   GitHub es el SERVICIO: Es la nube donde vamos a subir los proyectos que vamos a versionar.
+        Alternativas a GitHub: BitBucket, GitLab.
+
+• Creando un repositorio local con GIT (git init):
+    cs: permite pósicionarme en una carpeta.
+    ls: lista de posibles directorios para luego con cs posicionarme en el que quiero.
+    git init: creando un nuevo repositorio Git vacio.
+        Nota: la carpeta del nuevo repositorio se encontrará oculta.
+    touch nombre_archivo: al usar touch app.js (nombre_archivo) creamos el archivo app.js del tipo Javascript en donde estabamos posicionados
+    code .: abrimos los códigos en el directorio posicionado en VSC. 
+    git status: estado actual del repositorio.
+    git add nombre_archivo: git add te permite agregar un archivo (por ej. app.js) al stage(*) de Git, para que Git le haga tracking. Un archivo que no esté trackeado es un archivo que Git no puede versionar.
+        Nota01: (*) stage es un área intermedia donde se preparan los cambios antes de confirmarlos en el historial de cambios del repositorio.
+        Nota02: git add nombre_archivo también nos va a servir cuando ya lo hayamos agregado una primera vez pero ese mismo archivo fue modificado => le pedimos a Git que agregue también los cambios. Ojo, existe git restore cuando no queremos aceptar los cambios, pero esto borra directamente toda la linea de código.
+
+• Sacando archivos del stage (git rm --cached):    
+    git rm --cached nombre_archivo: el archivo no se elimina de la carpeta pero si del stage, es decir, ya no se le está haciendo un seguimiento (tracking). La sigla rm viene de remove.
+    git add .: agrego todos los archivos, No recomendable porque puedo agregar otros archivos que estén ocultos.
+
+• Creando un archivo .gitignore:
+    Crear un archivo .gitignore y dentro de él escribir el nombre y tipo de archivo a ser ignorado. Inevitablemente si hacemos 'git add .' se agregará el .gitignore, pero no los ignorados dentro de él.
+
+
+
+• Haciendo commits en GIT (git commit):
+    Los commit son puntos historicos en la linea de tiempo de mi repositorio. Para eso usamos en el bash: git commit -m "colocar_mensaje". Pero antes debemos chequear que se tenga las iniciales/firma correctas para hacerlo...
+        git config user.name
+        git config user.email
+    Si no tenemos debemos ingresarlas...
+        git config user.name NicoDiDomenico
+        git config user.email Nico.A.DiDomenico@gmail.com
+    Verificar la configuración local:
+        git config --local --list
+    Eliminar la configuración local:
+        git config --unset --local user.name 'nombre-a-eliminar'
+    Verificar la configuración global:
+        git config --global --list
+    Eliminar la configuración global: 
+        git config --unset --global user.name 'nombre-a-eliminar'
+
+    
+• Conectando el repositorio local y remoto (git remote add origin):
+    Seguimos los pasos según el repositorio remoto utilizado (ej. GitHub). 
+    Los dos comandos recomendados por GitHub tienen propósitos diferentes:
+
+    1. "Create a new repository on the command line" (Crear un nuevo repositorio en la línea de comandos):
+    Este comando te guiará a través del proceso para crear un nuevo repositorio en tu cuenta de GitHub directamente desde la línea de comandos de tu computadora. Esto implica inicializar un nuevo repositorio git localmente en tu computadora, agregar archivos, hacer commits y luego enviar este repositorio a GitHub. Es útil cuando tienes un proyecto local que deseas compartir en GitHub por primera vez.
+
+    2. "Push an existing repository from the command line" (Enviar un repositorio existente desde la línea de comandos): Este comando es útil cuando ya tienes un repositorio git localmente en tu computadora y deseas enviarlo a GitHub. Te guiará a través del proceso para conectar tu repositorio local con un repositorio en GitHub y enviar tus cambios. Es útil cuando ya tienes un proyecto en tu computadora que deseas sincronizar con un repositorio en GitHub. 
+        Al usar este método los pasos son los siguientes:
+            a. Creamos una carpeta en el escritorio y le damos nombre.
+            b. Dentro de la misma hacemos clic derecho y abrimos la terminal(git bash)
+            c. Ingresamos: git init
+            d. Ingresamos: git config user.name inserto_nombre
+            e. Ingresamos: git config user.email inserto_email
+            f. Usamos solo la primera linea que recomienda GitHub al ir a Repositories --> New... --> ...Create repository --> Método 2. --> git remote add origin 'URL'
+            g. Ingresamos: code . 
+            h. Se abrirá VSC y crearemos un README.md, en este estará toda la info de mi proyecto.
+          { i. Ingresamos: git add README.md 
+            j. Ingresamos: git commit -m "initial commit" } --> git add . + git commit -m "mensaje" puede ser simplificado por git commit -am "mensaje" <=> el archivo es modificado, NO es nuevo.
+            k. Ingresamos: git push origin master
+        
+        *En todo momento se puede usar git status(estado del git) y cd(posicionarse en la carpeta)
+
+• Subiendo archivos al repositorio remoto (git push):
+    -> El último paso es subir a la nube el proyecto => git push origin master (GitHub va a pedir contraseña o token para hacerlo).
+        - 'origin' es el alias de mi repositorio.
+        - 'master' es el nombre de la rama, por defecto la rama inicial de un repositorio se le llama main / master.
+
+• Agregando colaboradores al repositorio:
+    Ir a ru repositorio --> Elegir el proyecto que quieres agregar a una persona para ayudar en el mismo --> Settings --> Collaborators --> Add peaplo
+
+• Clonando un repositorio (git clone):
+    git clone 'url-codigo-copiado-repositorio'
+        - Si no has configurado tu nombre de usuario de Git a nivel global en tu máquina, es posible que necesites configurarlo cada vez que clonas un repositorio. Puedes configurarlo globalmente una vez y no tendrás que hacerlo de nuevo. Puedes hacerlo ejecutando los siguientes comandos en tu terminal:
+            git config --global user.name "Tu Nombre"
+            git config --global user.email "tu@email.com"
+
+
+• Trayendo archivos del repositorio (git pull):
+    Traer archivos del repositorio <=> clonado anterorimente con: git pull origin master 
+
+• Resolviendo conflictos (git merge):
+    - los merge ocurren cuando quiero pushear un archivo del repositorio que modifiqué pero que otro colaborador ya lo modificó y pushió antes que yo. Por lo tanto, tendré que hacerle un pull a ese archivo y hacer el famoso merge, lo cual deberé decidir si quedarme con el mio, el del colaborador, o ambos. La recomendación es NO trabajar con el mismo archivo que el colaborador, mejor trabajar con distintos módulos pero propios y asi evitar los merge.
+        -> Una vez resuelto el conflito debo hacer:
+            git add.
+            git commit --> el -m será automático y del tipo: Merge branch 'master' of 'URL_repo'
+            git push origin master --> Esto es si es que quiero aplicar mis cambios al proyecto en el que estoy con el colaborador, recordar que esto no es recomendable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
