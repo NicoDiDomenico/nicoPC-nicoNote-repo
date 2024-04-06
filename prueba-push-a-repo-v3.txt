@@ -1,1 +1,0 @@
-NicoNote le hará un push a este archivo txt al repo nicoPC-nicoNote-repo. Además le corregí el commit.
