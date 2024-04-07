@@ -98,8 +98,21 @@ Git es un control de versiones, es un elemento/software/serie de comandos  que n
             git commit --> el -m será automático y del tipo: Merge branch 'master' of 'URL_repo'
             git push origin master --> Esto es si es que quiero aplicar mis cambios al proyecto en el que estoy con el colaborador, recordar que esto no es recomendable.
 
+• Creando ramas en GIT (git checkout -b):
+    - branch(rama): de manera informal podemos decir que son realidades alternativas que nos permiten a nosotros implementar funcionalidades de manera alternativa.
+        La nueva rama se genera a partir del último commit que se hizo. De esta forma se puede trabajar en algo alternativo mientras la otra linea de proyecto puede seguir su causa natural
+            OJO: igual no se debe evitar la comunicacion en equipos para asi evitar modificar los mismos archivos.
+            1:35:08
+    Vamos a usar:
+        - git checkout -b: checkout para salir de la master, y -b para crear una nueva.
+        - git switch 'rama_a_cambiar': cambiamos de rama, notar que una vez en la rama que queriamos ir, en VCS, no aparecerá los archivos que se hiceron en otras ramas.
+        - git branch: chequeo mis ramas y, en verde, cual estoy posicionado.
+        ------------------------------
+        - git fetch: trae la metadata, y de esta forma se va a poder ver la rama creada nueva del repo. 
+    1
 
-
+• Creando Pull Request en github:
+    pull request: Solicitud de integracion de cambio de una rama a la otra. Simplemente es ir al repositorio, y luego a la rama para que los cambios que se hicieron en esa rama se integre con la rama master/main. 
 
 
 
