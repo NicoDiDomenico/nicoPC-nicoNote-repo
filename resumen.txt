@@ -104,7 +104,7 @@ Git es un control de versiones, es un elemento/software/serie de comandos  que n
             OJO: igual no se debe evitar la comunicacion en equipos para asi evitar modificar los mismos archivos.
             1:35:08
     Vamos a usar:
-        - git checkout -b: checkout para salir de la master, y -b para crear una nueva.
+        - git checkout -b 'nueva_rama': checkout para salir de la master, y -b para crear una nueva.
         - git switch 'rama_a_cambiar': cambiamos de rama, notar que una vez en la rama que queriamos ir, en VCS, no aparecerá los archivos que se hiceron en otras ramas.
         - git branch: chequeo mis ramas y, en verde, cual estoy posicionado.
         - git fetch: trae la metadata, y de esta forma se va a poder ver la rama creada nueva del repo. (Todavia tengo mis dudas)
